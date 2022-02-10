@@ -101,4 +101,15 @@ objects have states (variables) and behaviors (methods)
         return type;
     }
 
+
+    public boolean equals(Cookie cookie){
+
+        if(cookie == this){return true;}
+
+        if(this.type.equals(cookie.type)){
+            return true;
+        }
+        return false;
+    }
+
 }

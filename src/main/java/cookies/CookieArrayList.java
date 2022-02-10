@@ -7,8 +7,8 @@ public class CookieArrayList {
 //    Array of something;
 //    The current amount of somethings;
 
-    static Cookie[] cookieArray;
-    static int nextIndex = 0;
+    Cookie[] cookieArray;
+    int nextIndex = 0;
 
     //    Constructor that creates an initial array of some size;
 
@@ -18,8 +18,8 @@ public class CookieArrayList {
 
 //    Get method that returns the something of a given index;
 
-    public static Cookie getArrayCookie(int index){
-        return cookieArray[index];
+    public Cookie getArrayCookie(int index){
+        return this.cookieArray[index];
     }
 
 //    Add method
@@ -31,40 +31,83 @@ public class CookieArrayList {
 //    that adds things at an index that is currently unused
 //    (this will be the current size)
 
-    public static void addToCookieArray(Cookie newCookie){
+    public void addToCookieArray(Cookie newCookie){
+        //TODO test this first.
+        while(cookieArray.length <= nextIndex) {
 
-        while(cookieArray[nextIndex] != null || cookieArray.length <= nextIndex) {
-            if(cookieArray[nextIndex] != null){
-                nextIndex++;
+            //This is where the array gets expanded.
+            Cookie[] tempCookieArray = new Cookie[cookieArray.length*2];
+            //Loop through old array and copy into new.
+            for(int x =0; x < nextIndex; x++){
+                tempCookieArray[x] = cookieArray[x];
             }
-            if (cookieArray.length <= nextIndex){
-                //This is where the array gets expanded.
-                Cookie[] tempCookieArray = new Cookie[nextIndex];
-                //Loop through old array and copy into new.
-                for(int x =0; x < nextIndex; x++){
-                    tempCookieArray[x] = cookieArray[x];
-                }
-                //Set pointer to new array.
-                cookieArray = tempCookieArray;
-            }
+            //Set pointer to new array.
+            cookieArray = tempCookieArray;
+
         }
-
-        if(cookieArray[nextIndex] == null){
+        if(cookieArray[nextIndex] != null){
+            nextIndex++;
+            cookieArray[nextIndex] = newCookie;
+            nextIndex++;
+        }
+        else {
             cookieArray[nextIndex] = newCookie;
             nextIndex++;
         }
 
     }
 
+    //    a method that can return a boolean determining if your array list contains a certain item
+    //    (if you had an arraylist of objects, as opposed to primitives, you may need to implement and use .equals)
+
+    public boolean isCookieHere(Cookie testCookie){
+
+        //Iterate through the list and compare against testCookie.
+        for(int x=0; x < cookieArray.length;x++){
+            if(cookieArray[x] != null) {
+                if (cookieArray[x].equals(testCookie)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 
 
-//    a method that can return a boolean determining if your array list contains a certain item
-//    (if you had an arraylist of objects, as opposed to primitives, you may need to implement and use .equals)
 //    a method that can determine if your arraylist is identical to another one
 //    (again, .equals)
+    public boolean areCookieArraysSame(CookieArrayList testList){
+        boolean isCookieSame = false;
+        if(cookieArray.length == testList.cookieArray.length) {
+            for (int x = 0; x < cookieArray.length; x++) {
+                if (cookieArray[x] != null && testList.cookieArray[x] != null) {
+                    if (cookieArray[x].equals(testList.cookieArray[x])) {
+                        isCookieSame = true;
+                    }
+                    else{isCookieSame=false;}
+                }
+                else if(cookieArray[x] == null && testList.cookieArray[x] == null) {
+                    isCookieSame = true;
+                }
+                else {isCookieSame =false;}
+            }
+        }
+        if(isCookieSame){return true;}
+        return false;
+    }
+
+
 //    a method that sets a given index to a particular value
 
-
+    public void setCookieHere(int index, Cookie aGivenCookie){
+        if(index>0 && index< cookieArray.length){
+            cookieArray[index] = aGivenCookie;
+        }
+        else{
+            System.out.println("Address out of bounds.");
+        }
+    }
 
 
 
