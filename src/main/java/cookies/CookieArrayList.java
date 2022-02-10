@@ -32,7 +32,6 @@ public class CookieArrayList {
 //    (this will be the current size)
 
     public void addToCookieArray(Cookie newCookie){
-        //TODO test this first.
         while(cookieArray.length <= nextIndex) {
 
             //This is where the array gets expanded.

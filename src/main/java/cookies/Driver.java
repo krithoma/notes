@@ -14,62 +14,12 @@ everything in java's a class!
 especially objects, which are instances of classes
  */
 
-import java.util.Arrays;
-
 public class Driver {
 /*main is just the entry point for running our program
 we can put all of our code in main i guess, but this is very disorganized
  */
     public static void main(String[] args){
 
-        //Create a list for testing.
-       CookieArrayList myCookieArray = new CookieArrayList(4);
-       CookieArrayList myOtherCArray = new CookieArrayList(4);
-       //Add 3 cookies.
-        Cookie cookie1 = new Cookie("Sugar");
-        Cookie cookie2 = new Cookie("Sugar2");
-        Cookie cookie3 = new Cookie("Oatmeal");
-
-        Cookie cookieO1 =  new Cookie("Sugar");
-        Cookie cookieO2 =  new Cookie("Sugar2");
-        Cookie cookieO3 =  new Cookie("Oatmeal");
-
-        myCookieArray.addToCookieArray(cookie1);
-        myCookieArray.addToCookieArray(cookie2);
-        myCookieArray.addToCookieArray(cookie3);
-
-        myOtherCArray.addToCookieArray(cookieO1);
-        myOtherCArray.addToCookieArray(cookieO2);
-        myOtherCArray.addToCookieArray(cookieO3);
-
-        System.out.println(Arrays.toString(myCookieArray.cookieArray));
-        System.out.println(Arrays.toString(myOtherCArray.cookieArray));
-        //Test if equal.
-        System.out.println("Are they same? " + myCookieArray.areCookieArraysSame(myOtherCArray));
-
-        //Test position.
-        Cookie lookCookie = myCookieArray.getArrayCookie(1);
-        System.out.println("Which cookie? " + lookCookie);
-        System.out.println(Arrays.toString(myCookieArray.cookieArray));
-        //Add 2 more.
-
-        Cookie cookie4 = new Cookie("Chocolate");
-        Cookie cookie5 = new Cookie("No Bake");
-
-        myCookieArray.addToCookieArray(cookie4);
-        myCookieArray.addToCookieArray(cookie5);
-        System.out.println(Arrays.toString(myCookieArray.cookieArray));
-        System.out.println("Are they same? " + myCookieArray.areCookieArraysSame(myOtherCArray));
-
-        //Test if cookie is there.
-        Cookie testCookie1 = new Cookie("Sugar");
-        System.out.println(myCookieArray.isCookieHere(testCookie1));
-        Cookie testCookie2 = new Cookie("Chocolate2");
-        System.out.println(myCookieArray.isCookieHere(testCookie2));
-
-        //Test setting a new cookie in array
-        myCookieArray.setCookieHere(5, testCookie2);
-        System.out.println(Arrays.toString(myCookieArray.cookieArray));
 
 
     }
