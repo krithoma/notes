@@ -4,19 +4,36 @@ import cookies.Cookie;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 public class Driver {
+
+    public static final Logger log = Logger.getLogger(Driver.class);
 
     public static void main(String[] args){
 
+        log.info("Hello logger!");
+
         System.out.println("cat".compareTo("dog"));
         System.out.println("dog".compareTo("cat"));
+        Animal a1 = null;
+        Animal a2 = null;
+        Animal a3 = null;
+        Animal a4 = null;
+        Animal a5 = null;
+        Animal a6 = null;
 
-        Animal a1 = new Animal("giraffe");
-        Animal a2 = new Animal("cow");
-        Animal a3 = new Animal("shark");
-        Animal a4 = new Animal("lion");
-        Animal a5 = new Animal("lion");
-        Animal a6 = new Animal("zebra");
+        try {
+            a1 = new Animal("giraffe");
+            a2 = new Animal("cow");
+            a3 = new Animal("shark");
+            a4 = new Animal("lion");
+            a5 = new Animal("lion");
+            a6 = new Animal("zebra");
+        }catch(FakeAnimalException e){
+            Driver.log.warn("Not real");
+        }
 
         System.out.println(a1.compareTo(a2));
 
@@ -24,8 +41,10 @@ public class Driver {
 
 
 
+
         AnimalTree<Animal> tree = new AnimalTree<Animal>();
         AnimalTree<Cookie> tree2 = new AnimalTree<Cookie>();
+
 
         ArrayList<String> list1 = new ArrayList<>();
         ArrayList<Cookie> list2 = new ArrayList<>();
@@ -65,6 +84,16 @@ public class Driver {
 
 
          */
+
+        try{
+            Animal a7 = new Animal("Bigfoot");
+            tree.add(a7);
+            if(tree.contains(a7)){
+                Driver.log.info("Bigfoot's in the zoo!");
+            }
+        } catch (FakeAnimalException e) {
+            Driver.log.warn("Not real");
+        }
 
 
     }
