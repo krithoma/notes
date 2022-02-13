@@ -103,7 +103,7 @@ public class CookieArrayList {
             cookieArray[index] = aGivenCookie;
         }
         else{
-            System.out.println("Address out of bounds.");
+            Driver.log.info("[" + index + "]: " + "Address out of bounds.");
         }
     }
 

@@ -20,8 +20,11 @@ public class Driver {
 /*main is just the entry point for running our program
 we can put all of our code in main i guess, but this is very disorganized
  */
+
+    public static final Logger log = Logger.getLogger(zoo.Driver.class);
+
     public static void main(String[] args){
-        zoo.Driver.log.info("Hello");
+        log.info("Hello");
 
 
 
