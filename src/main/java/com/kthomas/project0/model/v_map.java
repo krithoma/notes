@@ -2,7 +2,7 @@ package com.kthomas.project0.model;
 
 public class v_map {
 
-    v_room[] mapofrooms;
+    v_room[] mapofrooms = new v_room[10];
 
     public v_map() {
 
