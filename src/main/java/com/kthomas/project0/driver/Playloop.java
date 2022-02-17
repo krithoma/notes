@@ -2,11 +2,11 @@ package com.kthomas.project0.driver;
 
 import com.kthomas.project0.dao.v_roomDAO;
 import com.kthomas.project0.model.v_map;
-import com.kthomas.project0.model.v_room;
 import com.kthomas.project0.util.KTConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class Playloop {
 
@@ -26,8 +26,20 @@ public class Playloop {
     }
 
     public static void Dotheloop(){
-        //Now we just have to loop a player interface and respond.
-        v_room checkroom = catacomb.getRoom(wherePlayer);
-        System.out.println(checkroom.getRoomdesc());
+        Scanner playerinput = new Scanner(System.in);
+        boolean quitflag = false;
+        movementParse v_parse = new movementParse(catacomb);
+
+       do {
+            v_parse.showroom(wherePlayer);
+
+            System.out.println("Which way do you go?");
+            String whattyped = playerinput.nextLine();
+            if(whattyped.equals("quit")){quitflag = true;}
+
+            wherePlayer = v_parse.movePlayer(whattyped, wherePlayer);
+        } while(quitflag == false);
+
+        playerinput.close();
     }
 }

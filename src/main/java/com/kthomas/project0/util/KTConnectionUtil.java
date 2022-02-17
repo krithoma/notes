@@ -1,5 +1,8 @@
 package com.kthomas.project0.util;
 
+import com.kthomas.project0.driver.Driver;
+import org.apache.log4j.Level;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,15 +31,15 @@ public class KTConnectionUtil {
                   Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                   conn = java.sql.DriverManager.getConnection(url, username, password);
               }catch(SQLException e){
-                  e.printStackTrace();
+                  Driver.log.log(Level.WARN, "Difficulty connecting...", e);
               } catch (ClassNotFoundException e) {
-                  e.printStackTrace();
+                  Driver.log.log(Level.WARN, "Difficulty connecting...", e);
               }
           }
         } catch(FileNotFoundException e){
-            e.printStackTrace();
+            Driver.log.log(Level.WARN, "No file...", e);
         } catch(IOException e){
-            e.printStackTrace();
+            Driver.log.log(Level.WARN, "No file...", e);
         }
         return conn;
     }
